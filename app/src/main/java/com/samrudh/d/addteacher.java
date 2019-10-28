@@ -1,4 +1,4 @@
-package com.mukesh.ip40;
+package com.samrudh.d;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,7 +55,7 @@ public class addteacher extends AppCompatActivity {
         tpass = tpassword.getText().toString();
 
         if (!(TextUtils.isEmpty(Tid.getText().toString()))) {
-           // String id = databaseTeacher.push().getKey();
+
             Teacher teacher =new Teacher(tname ,tid ,sub ,classname,tpass);
             databaseTeacher.child(tid).setValue(teacher);
             Toast.makeText(getApplicationContext(),"Teacher added successfully", Toast.LENGTH_LONG).show();

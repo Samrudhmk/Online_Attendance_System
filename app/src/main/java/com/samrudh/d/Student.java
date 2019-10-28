@@ -1,4 +1,4 @@
-package com.mukesh.ip40;
+package com.samrudh.d;
 
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -10,9 +10,7 @@ public class Student {
     String classes;
     String spass;
 
-  /*  public Student(String sname, String sid){
 
-    }*/
 
     public Student(String sname, String sid,String classes,String spass) {
         this.sname = sname;

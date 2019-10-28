@@ -1,4 +1,4 @@
-package com.mukesh.ip40;
+package com.samrudh.d;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -77,31 +76,17 @@ public class teacher_attendanceSheet extends AppCompatActivity {
         Studentlist.clear();
         required_date = date.getText().toString();
         dbAttendance = ref.child("attendance");
-        Studentlist.add("      SID              " + "               period");
+        Studentlist.add("      SID       "+"Status" + "   period");
         for (Object sid : userlist) {
             dbAttendance.child(required_date).child(sid.toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    //DataSnapshot dsp=dataSnapshot.child(sid.toString());
                     for(DataSnapshot dsp : dataSnapshot.getChildren()) {
                         String p1 = dsp.getValue().toString();
-                        //Toast.makeText(getApplicationContext(),p1,Toast.LENGTH_LONG).show();
                         if((p1.equals("A / "+teacher_id))||(p1.equals("P / "+teacher_id))){
                             Studentlist.add(dataSnapshot.getKey().toString() + "            " + p1.substring(0,1) +"        "+dsp.getKey());
                         }
                     }
-                  /*  String p2=dataSnapshot.child(sid.toString()).child("p2").getValue().toString().substring(0,1);
-                    String p3=dataSnapshot.child(sid.toString()).child("p3").getValue().toString().substring(0,1);
-                    String p4=dataSnapshot.child(sid.toString()).child("p4").getValue().toString().substring(0,1);
-                    String p5=dataSnapshot.child(sid.toString()).child("p5").getValue().toString().substring(0,1);
-                    String p6=dataSnapshot.child(sid.toString()).child("p6").getValue().toString().substring(0,1);
-                    String p7=dataSnapshot.child(sid.toString()).child("p7").getValue().toString().substring(0,1);
-                    String p8=dataSnapshot.child(sid.toString()).child("p8").getValue().toString().substring(0,1);
-                */
-                  //  Studentlist.add(dataSnapshot.getKey().toString() + "    " + p1); //add result into array list
-
-
-                    //Toast.makeText(getApplicationContext(),Studentlist.toString(), Toast.LENGTH_LONG).show();
                     list(Studentlist);
 
                 }

@@ -1,4 +1,4 @@
-package com.mukesh.ip40;
+package com.samrudh.d;
 
 import android.os.Bundle;
 import android.os.Environment;
@@ -68,17 +68,15 @@ public class takeAttendance extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         period = (Spinner) findViewById(R.id.spinner4);
 
-        // ArrayList Userlist;
         selectedItems = new ArrayList<String>();
 
         TextView classname = (TextView) findViewById(R.id.textView);
-        classname.setText("IT-X");
+        classname.setText("CSE");
 
-        //to get class name from teacherlogin
+
         Bundle bundle1 = getIntent().getExtras();
         class_selected = bundle1.getString("class_selected");
         teacher_id = bundle1.getString("tid");
-      //  Toast.makeText(getApplicationContext(), teacher_id, Toast.LENGTH_LONG).show();
 
         classname.setText(class_selected);
 
@@ -112,7 +110,6 @@ public class takeAttendance extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -158,14 +155,12 @@ public class takeAttendance extends AppCompatActivity {
                 else
                     selItems += "/" + item;
             }
-            // Toast.makeText(this, selItems, Toast.LENGTH_LONG).show();
 
 
             //for making absent
             for (String item : nonselectedItems) {
                 Toast.makeText(this, "Attendance created Successfully", Toast.LENGTH_SHORT).show();
                 dbAttendance.child(item).child(periodno).setValue("A" + " / " + teacher_id);
-                //Toast.makeText(this, "absentees:" + nonselectedItems, Toast.LENGTH_LONG).show();
 
             }
         }
@@ -186,10 +181,9 @@ public class takeAttendance extends AppCompatActivity {
 
         }
         catch (Exception e){
-           //Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
             File wbfile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/online_attendance/" + class_selected + ".xls");
             wb = createWorkbook(class_selected+"_month_"+date.substring(3,5));
-           // workbook = Workbook.getWorkbook(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/online_attendance/" + class_selected + ".xls"));
+
              s = createSheet(wb, "month_", 0);//to create month's sheet
         }
 
@@ -203,12 +197,11 @@ public class takeAttendance extends AppCompatActivity {
         int i = s.getColumns();
         if(i==0){
             try {
-                //for header
                 Label newCell=new Label(0,0,"Student_id");
                 Label newCell2=new Label(1,0,"Student_name");
                 WritableFont headerFont = new WritableFont(WritableFont.ARIAL, 10, WritableFont.BOLD);
                 WritableCellFormat headerFormat = new WritableCellFormat(headerFont);
-                //center align the cells' contents
+
                 headerFormat.setAlignment(Alignment.CENTRE);
                 newCell.setCellFormat(headerFormat);
                 newCell2.setCellFormat(headerFormat);
@@ -238,13 +231,11 @@ public class takeAttendance extends AppCompatActivity {
 
         }
         i=s.getColumns();
-       // Toast.makeText(this, i  , Toast.LENGTH_LONG).show();
         int j=1;
         try {
             Label newCell=new Label(i,0, date);
             WritableFont headerFont = new WritableFont(WritableFont.ARIAL, 10, WritableFont.BOLD);
             WritableCellFormat headerFormat = new WritableCellFormat(headerFont);
-            //center align the cells' contents
             headerFormat.setAlignment(Alignment.CENTRE);
             newCell.setCellFormat(headerFormat);
             s.addCell(newCell);
@@ -256,16 +247,13 @@ public class takeAttendance extends AppCompatActivity {
 
 
             Label label2;
-            // Label label2;
 
             if (selectedItems.contains(item)) {
                 label2=new Label(i,j,"P");
-                //Toast.makeText(this, item.toString() + "  present :", Toast.LENGTH_LONG).show();
 
 
             } else {
                 label2=new Label(i,j,"A");
-                //Toast.makeText(this, item.toString() + "  absent :", Toast.LENGTH_LONG).show();
 
             }
             j++;
@@ -284,7 +272,6 @@ public class takeAttendance extends AppCompatActivity {
 
 
         }
-        //for making consolidate report
         Date today = new Date();
 
         String tomorrow =new SimpleDateFormat("dd-MM-yyyy").format(new Date(today.getTime() + (1000 * 60 * 60 * 24)));// new Date(today.getTime() + (1000 * 60 * 60 * 24));
@@ -293,7 +280,7 @@ public class takeAttendance extends AppCompatActivity {
             int row =s.getRows();
             int col=s.getColumns();
             String xx="";
-            int nop,tc;//to remove two xtra columns
+            int nop,tc;
 
             for(i = 0; i<row; i++)
             {
@@ -352,23 +339,17 @@ public class takeAttendance extends AppCompatActivity {
         WorkbookSettings wbSettings = new WorkbookSettings();
         wbSettings.setUseTemporaryFileDuringWrite(true);
         File sdCard = Environment.getExternalStorageDirectory();
-        //add on the your app's path
         File dir = new File(sdCard.getAbsolutePath() + "/online_attendance");
-        //make them in case they're not there
         dir.mkdirs();
-        //create a standard java.io.File object for the Workbook to use
+
         File wbfile = new File(dir,fileName+".xls");
 
         WritableWorkbook wb = null;
 
         try{
-            //create a new WritableWorkbook using the java.io.File and
-            //WorkbookSettings from above
+
             wb = Workbook.createWorkbook(wbfile,workbook/*wbSettings*/);
-        }/*catch(IOException ex){
-          //  Log.e(TAG,ex.getStackTrace().toString());
-          //  Log.e(TAG, ex.getMessage());
-        }*/ catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -402,7 +383,6 @@ public class takeAttendance extends AppCompatActivity {
     }
 
     public WritableSheet createSheet(WritableWorkbook wb, String sheetName, int sheetIndex){
-        //create a new WritableSheet and return it
 
             return wb.createSheet(sheetName, sheetIndex);
 

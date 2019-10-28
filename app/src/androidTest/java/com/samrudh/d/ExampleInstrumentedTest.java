@@ -1,4 +1,4 @@
-package com.mukesh.ip40;
+package com.samrudh.d;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.mukesh.ip40", appContext.getPackageName());
+        assertEquals("com.samrudh.d", appContext.getPackageName());
     }
 }

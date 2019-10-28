@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mukesh.ip40">
+    package="com.samrudh.d">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
-        android:icon="@drawable/icon"
+
         android:label="@string/app_name"
-        android:roundIcon="@drawable/icon"
+
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.samrudh.d.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".teacherlogin" />
-        <activity android:name=".studentlogin" />
-        <activity android:name=".adminlogin" />
-        <activity android:name=".addteacher" />
-        <activity android:name=".addstudent" />
-        <activity android:name=".takeAttendance" />
-        <activity android:name=".admin_attendanceSheet" />
-        <activity android:name=".teacher_attendanceSheet" />
-        <activity android:name=".student_attendance_sheet"></activity>
+        <activity android:name="com.samrudh.d.LoginActivity" />
+        <activity android:name="com.samrudh.d.teacherlogin" />
+        <activity android:name="com.samrudh.d.studentlogin" />
+        <activity android:name="com.samrudh.d.adminlogin" />
+        <activity android:name="com.samrudh.d.addteacher" />
+        <activity android:name="com.samrudh.d.addstudent" />
+        <activity android:name="com.samrudh.d.takeAttendance" />
+        <activity android:name="com.samrudh.d.admin_attendanceSheet" />
+        <activity android:name="com.samrudh.d.teacher_attendanceSheet" />
+        <activity android:name="com.samrudh.d.student_attendance_sheet"></activity>
     </application>
 
 </manifest>

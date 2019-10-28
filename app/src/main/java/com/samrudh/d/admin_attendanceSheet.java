@@ -1,9 +1,12 @@
-package com.mukesh.ip40;
+package com.samrudh.d;
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -60,24 +63,32 @@ public class admin_attendanceSheet extends AppCompatActivity {
         dbAttendance.child(required_date).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Result will be holded Here
+
 
                 Studentlist.add("      SID              "+"p1  "+"p2  "+"p3  "+"p4   "+ "p5   "+"p6  "+"p7  "+"p8");
                 for (Object sid : userlist) {
 
-                    //DataSnapshot dsp=dataSnapshot.child(sid.toString());
-                    String p1=dataSnapshot.child(sid.toString()).child("p1").getValue().toString().substring(0,1);
-                    String p2=dataSnapshot.child(sid.toString()).child("p2").getValue().toString().substring(0,1);
-                    String p3=dataSnapshot.child(sid.toString()).child("p3").getValue().toString().substring(0,1);
-                    String p4=dataSnapshot.child(sid.toString()).child("p4").getValue().toString().substring(0,1);
-                    String p5=dataSnapshot.child(sid.toString()).child("p5").getValue().toString().substring(0,1);
-                    String p6=dataSnapshot.child(sid.toString()).child("p6").getValue().toString().substring(0,1);
-                    String p7=dataSnapshot.child(sid.toString()).child("p7").getValue().toString().substring(0,1);
-                    String p8=dataSnapshot.child(sid.toString()).child("p8").getValue().toString().substring(0,1);
-                    Studentlist.add(dataSnapshot.child(sid.toString()).getKey().toString()+"    "+p1+"     "+p2+"     "+p3+"     "+p4+"      "+p5+"       "+p6+"      "+p7+"      "+p8); //add result into array list
-                }
-                //Toast.makeText(getApplicationContext(),Studentlist.toString(), Toast.LENGTH_LONG).show();
-                list(Studentlist);
+                    DataSnapshot dsp = dataSnapshot.child(sid.toString());
+                    if (dataSnapshot == null) {
+
+                        throw new NullPointerException(
+                                " :: Parameter 'param' was null inside method 'doSomething'.");
+
+                    }
+                        String p1 = dataSnapshot.child(sid.toString()).child("p1").getValue().toString().substring(0, 1);
+                        String p2 = dataSnapshot.child(sid.toString()).child("p2").getValue().toString().substring(0, 1);
+                        String p3 = dataSnapshot.child(sid.toString()).child("p3").getValue().toString().substring(0, 1);
+                        String p4 = dataSnapshot.child(sid.toString()).child("p4").getValue().toString().substring(0, 1);
+                        String p5 = dataSnapshot.child(sid.toString()).child("p5").getValue().toString().substring(0, 1);
+                        String p6 = dataSnapshot.child(sid.toString()).child("p6").getValue().toString().substring(0, 1);
+                        String p7 = dataSnapshot.child(sid.toString()).child("p7").getValue().toString().substring(0, 1);
+                        String p8 = dataSnapshot.child(sid.toString()).child("p8").getValue().toString().substring(0, 1);
+
+
+                        Studentlist.add(dataSnapshot.child(sid.toString()).getKey().toString() + "    " + p1 + "     " + p2 + "     " + p3 + "     " + p4 + "      " + p5 + "       " + p6 + "      " + p7 + "      " + p8);
+                    }
+                    //Toast.makeText(getApplicationContext(),Studentlist.toString(), Toast.LENGTH_LONG).show();
+                    list(Studentlist);
 
             }
 

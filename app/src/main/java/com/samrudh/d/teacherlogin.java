@@ -1,4 +1,4 @@
-package com.mukesh.ip40;
+package com.samrudh.d;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +30,6 @@ public class teacherlogin extends AppCompatActivity implements AdapterView.OnIte
         Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
 
 
-        //to get username from login page
         Bundle bundle1 = getIntent().getExtras();
         message = bundle1.getString("message");
         mToolbar=(Toolbar)findViewById(R.id.takeattendancebar);
@@ -55,7 +54,6 @@ public class teacherlogin extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         item = parent.getItemAtPosition(position).toString();
-        //  Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub

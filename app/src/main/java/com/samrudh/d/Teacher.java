@@ -1,7 +1,4 @@
-package com.mukesh.ip40;
-
-import android.widget.EditText;
-import android.widget.Spinner;
+package com.samrudh.d;
 
 
 public class Teacher {
@@ -11,9 +8,7 @@ public class Teacher {
     String classes;
     String tpass;
 
-  /*  public Teacher(String tname, String tid, EditText subject, Spinner classes){
 
-    }*/
 
     public Teacher(String tname, String tid, String subject, String classes, String tpass) {
         this.tname = tname;

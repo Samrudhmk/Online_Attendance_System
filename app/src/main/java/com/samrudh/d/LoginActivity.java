@@ -1,5 +1,6 @@
-package com.mukesh.ip40;
+package com.samrudh.d;
 
+import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //retrieving student id from firebase
+
 
         username =  (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.editText2);

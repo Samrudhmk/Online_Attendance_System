@@ -1,4 +1,4 @@
-package com.mukesh.ip40;
+package com.samrudh.d;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -38,19 +37,13 @@ public class addstudent extends AppCompatActivity {
         getSupportActionBar().setTitle("Add/Remove Student");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-       /* addButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                addTeacher();
-            }
-        });*/
     }
 
     public void addStudent(View v){
 
 
         if (!(TextUtils.isEmpty(Sid.getText().toString()))) {
-            //String id = databaseStudent.push().getKey();
+
             sname = Sname.getText().toString();
             sid = Sid.getText().toString();
             classname = classes.getSelectedItem().toString();
