@@ -1,5 +1,6 @@
 # Online_Attendance_System
 This application can be used to maintain Attendance Records
+
 Front end= Android Studio/ Native Java
 Back End= Firebase
 
